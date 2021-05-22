@@ -1,0 +1,52 @@
+#title
+{
+    /* border: 2px grey solid; */
+    margin: auto;
+    padding: 2px;
+    background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+#main
+{
+    display: flex;
+    align-items: top;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#CandidateBox
+{
+    border: 2px grey solid;
+    background-color: beige;
+    padding: 5px;
+    flex: 1;
+}
+
+#CandidateTitle
+{
+    text-align: center;
+
+}
+
+#CandidateBox.CandidateList
+{
+    background-color: cornflowerblue;
+    padding: 2px;
+    flex:1
+}
+
+#InputContainer
+{
+    flex: 1;
+}
+
+#AboutBox
+{
+    border: 2px grey solid;
+    padding: 5px;
+    background-color: yellow;
+    flex: 1;
+}

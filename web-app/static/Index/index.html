@@ -8,33 +8,37 @@
 <script type="module" src="main.js"></script>
 
 <!-- Document Start -->
-<head>
-    <h1>Ranked Choice Voting <br> (Instant Runoff) <br> Calculator</h1>
-</head>
-<main>
-    <section id="CandidateBox">
-        <h2>
-            Candidate Setup
-        </h2>
+<div id="title">
+    <h1>Ranked Choice Voting (Instant Runoff) <br> Calculator</h1>
+</div>
 
-        <section id="CandidateBox/CandidateList">
+<main id="main">
+
+    <div id="CandidateBox">
+        <div id="CandidateTitle">
+            <h2>Candidate Setup</h2>
+        </div>
+
+        <div id="CandidateBox.CandidateList">
             Candidate List
-        </section>
+        </div>
 
-        <section id="CandidateBox/CandidateInputBoxLabel">
-            placeholer explaining the candidate input mechanism
-        </section>
+        <div id="InputContainer">
+            <div id="CandidateBox.CandidateInputBoxLabel">
+                placeholer explaining the candidate input mechanism
+            </div>
 
-        <form>
-            <label for="CandidateBox/CandidateName">Input Candidate Name:</label> <br>
-            <input type="text" id="CandidateBox/CandidateName" name="CandidateBox/CandidateName"> <br>
-            <input type="submit" value="Add Candidate">
-        </form>
-        
-        <input type="button" value="Start Election">
-    </section>
+            <form id="CandidateInputForm">
+                <label for="CandidateBox.CandidateName">Input Candidate Name:</label> <br>
+                <input type="text" id="CandidateBox.CandidateName" name="CandidateBox.CandidateName"> <br>
+                <input type="submit" value="Add Candidate">
+            </form>
+            
+            <input type="button" value="Start Election">
+        </div>
+    </div>
 
-    <section id="AboutBox">
+    <div id="AboutBox">
         <h2>
             About
         </h2>
@@ -58,5 +62,5 @@
         <p>
             Reference: <a href="https://www.fairvote.org/how_rcv_works">FairVote</a>           
         </p>
-    </section>
+    </div>
 </main>
