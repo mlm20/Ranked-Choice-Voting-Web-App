@@ -9,32 +9,29 @@
 
 <!-- Document Start -->
 <div id="title">
-    <h1>Ranked Choice Voting (Instant Runoff) <br> Calculator</h1>
+    <h1>Ranked Choice Voting<br> (Instant Runoff) <br> Calculator</h1>
 </div>
 
 <main id="main">
 
     <div id="CandidateBox">
-        <div id="CandidateTitle">
+        <div id="Candidate-Title">
             <h2>Candidate Setup</h2>
         </div>
 
-        <div id="CandidateBox.CandidateList">
+        <div id="Candidate-list">
             Candidate List
         </div>
 
-        <div id="InputContainer">
-            <div id="CandidateBox.CandidateInputBoxLabel">
+        <div id="Input-Container">
+            <div id="Input-box-label">
                 placeholer explaining the candidate input mechanism
             </div>
 
-            <form id="CandidateInputForm">
-                <label for="CandidateBox.CandidateName">Input Candidate Name:</label> <br>
-                <input type="text" id="CandidateBox.CandidateName" name="CandidateBox.CandidateName"> <br>
-                <input type="submit" value="Add Candidate">
-            </form>
+            <input type="text" id="candidate-input-field">
+            <input type="button" value="Add Candidate" id="add-candidate-button">
             
-            <input type="button" value="Start Election">
+            <input type="button" value="Start Election" id="start-election-button">
         </div>
     </div>
 
