@@ -14,9 +14,10 @@
     --corner-radius: 8px;
     /* Candidate Box */
     --candidate-title-height: 10%;
-    --candidate-list-width: 40%;
+    --candidate-list-width: 30%;
     --text-input-width: 70%;
     --text-input-height: 15%;
+    --candidate-margin: 3%;
 }
 
 
@@ -43,6 +44,7 @@
     height: calc(100% - var(--banner-height));
     position: absolute;
     padding: var(--box-margin);
+    background-color: aquamarine;
 }
 
 #CandidateBox
@@ -80,6 +82,7 @@
     width: calc(100% - var(--candidate-list-width) - var(--primary-box-padding));
     height: calc(100% - var(--candidate-title-height) - 10%);
     position: absolute;
+    padding: 0px;
 }
 
 #Input-box-label
@@ -95,6 +98,8 @@
     width: var(--text-input-width);
     height: var(--text-input-height);
     left: 0%;
+    border: none;
+    padding: none;
 }
 
 #add-candidate-button
@@ -104,6 +109,14 @@
     height: var(--text-input-height);
     left: var(--text-input-width);
     font-family: 'Fira Sans', sans-serif;
+    border: none;
+    padding: none;
+    white-space: normal;
+}
+
+#add-candidate-button:hover
+{
+    background-color: darkgrey;
 }
 
 #start-election-button
@@ -114,6 +127,13 @@
     height: var(--text-input-height);
     left: 0%;
     bottom: 0%;
+    border: none;
+    white-space: normal;
+}
+
+#start-election-button:hover
+{
+    background-color: darkgrey;
 }
 
 #AboutBox
