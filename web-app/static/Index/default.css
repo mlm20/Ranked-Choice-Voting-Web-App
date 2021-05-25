@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
 :root
 {
     /* Title Variables */
@@ -13,6 +15,8 @@
     /* Candidate Box */
     --candidate-title-height: 10%;
     --candidate-list-width: 40%;
+    --text-input-width: 70%;
+    --text-input-height: 15%;
 }
 
 
@@ -23,7 +27,7 @@
     padding-top: var(--title-box-padding);
     padding-bottom: var(--title-box-padding);
     background-color: aqua;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     font-weight: bold;
     text-align: center;
     width: var(--banner-width);
@@ -34,7 +38,7 @@
 #main
 {
     align-items: top;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     width: 100%;
     height: calc(100% - var(--banner-height));
     position: absolute;
@@ -80,22 +84,36 @@
 
 #Input-box-label
 {
-
+    background-color: darkgreen;
+    width: calc(100% - var(--primary-box-padding) * 2);
+    padding: var(--primary-box-padding);
 }
 
 #candidate-input-field
 {
-
+    position: absolute;
+    width: var(--text-input-width);
+    height: var(--text-input-height);
+    left: 0%;
 }
 
 #add-candidate-button
 {
-
+    position: absolute;
+    width: calc(100% - var(--text-input-width));
+    height: var(--text-input-height);
+    left: var(--text-input-width);
+    font-family: 'Fira Sans', sans-serif;
 }
 
 #start-election-button
 {
-
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    width: calc(100% - var(--text-input-width));
+    height: var(--text-input-height);
+    left: 0%;
+    bottom: 0%;
 }
 
 #AboutBox
