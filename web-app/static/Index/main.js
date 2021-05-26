@@ -9,3 +9,9 @@ const cloneTemplate = function (id) {
 add_candidate_button.onclick = function () {
     console.log(candidate_input_text.value);
 };
+
+const randint = function (min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+};
