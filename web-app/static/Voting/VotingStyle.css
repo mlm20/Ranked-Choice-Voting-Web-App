@@ -12,6 +12,9 @@
    --box-height: 60%;
    --box-margin: 40px;
    --voting-area-width: 60%;
+   --counter-height: 70px;
+   --seperator: 10%;
+   --button-width: 40%;
 }
 
 #title
@@ -36,7 +39,7 @@
     height: calc(100% - var(--banner-height));
     position: absolute;
     padding: var(--box-margin);
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 #VotingTableContainer
@@ -66,20 +69,68 @@
 {
     background-color: coral;
     width: 100%;
-    height: auto;
+    height: calc(var(--counter-height) + 5%);
+    border-radius: var(--corner-radius);
 }
 
-#Vote-Counter
+#CounterLabel
 {
+    width: calc(100% - var(--counter-height));
+    /* background-color: darkseagreen; */
+    height: 100%;
+    margin: auto;
+    padding-top: 11%;
+    font-weight: bold;
+}
 
+
+#Vote-Counter
+{   
+    background-color: fuchsia;
+    height: var(--counter-height);
+    width: var(--counter-height);
+    position: absolute;
+    right: calc(0% + var(--primary-box-padding) + 2%);
+    top: calc(0% + var(--primary-box-padding) + 2%);
+    border-radius: var(--corner-radius);
+    border: 2px grey solid;
+}
+
+#seperator
+{
+    height: var(--seperator);
+    /* background-color: darkgreen; */
 }
 
 #NextVoterButton
 {
+    white-space: normal;
+    border: none;
+    width: var(--button-width);
+    height: var(--seperator);
+    font-family: 'Fira Sans', sans-serif;
+    border-radius: var(--corner-radius);
+}
 
+#NextVoterButton:hover
+{
+    background-color: darkgrey;
 }
 
 #SeeResultsButton
 {
+   bottom: calc(0% + var(--primary-box-padding));
+   left: calc(0% + var(--primary-box-padding));
+   position: absolute;
+   white-space: normal;
+   border: none;
+   width: var(--button-width);
+   height: var(--seperator);
+   font-family: 'Fira Sans', sans-serif;
+   border-radius: var(--corner-radius);
+}
 
+#SeeResultsButton:hover
+{
+    background-color: darkgrey;
 }
