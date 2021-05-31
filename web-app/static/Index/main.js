@@ -1,7 +1,7 @@
 const add_candidate_button = document.getElementById("add-candidate-button");
 const start_election = document.getElementById("start-election-button");
 const candidate_input_text = document.getElementById("candidate-input-field");
-const candidate_list_area = document.getElementById("Candidate-list");
+const candidate_list_area = document.getElementById("list");
 
 const cloneTemplate = function (id) {
     return document.importNode(document.getElementById(id).content, true);
@@ -16,6 +16,13 @@ const reset_text_field = function (text_field_id) {
     document.getElementById(text_field_id).value = "";
 }; // clears the text for input field
 
+const add_name_to_pane = function (name) {
+    let node = document.createElement("LI");
+    let textnode = document.createTextNode(name);
+    node.appendChild(textnode);
+    candidate_list_area.appendChild(node);
+};
+
 const Candidate_List = []; // declaration of candidate list
 
 add_candidate_button.onclick = function () {
@@ -25,6 +32,8 @@ add_candidate_button.onclick = function () {
     // add candidate name to array
     push_to_session_storage(Candidate_List);
     // push array to session storage
+    add_name_to_pane(candidate_input_text.value);
+    // adds candidate name to sidebar
     reset_text_field("candidate-input-field");
     // clear candidate input field
 };
