@@ -44,7 +44,7 @@
     height: calc(100% - var(--banner-height));
     position: absolute;
     padding: var(--box-margin);
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 #CandidateBox
