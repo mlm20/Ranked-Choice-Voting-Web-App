@@ -39,6 +39,10 @@ add_candidate_button.onclick = function () {
 };
 
 start_election.onclick = function () {
-    console.log("Election started");
-    location.href = "../Voting/Voting.html";
+    if (Candidate_List.length >= 2) {
+        console.log("Election started");
+        location.href = "../Voting/Voting.html";
+    } else {
+        
+    }
 };
