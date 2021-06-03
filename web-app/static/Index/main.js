@@ -43,6 +43,6 @@ start_election.onclick = function () {
         console.log("Election started");
         location.href = "../Voting/Voting.html";
     } else {
-        
+        window.alert("You must input at least two candidates.");
     }
 };
