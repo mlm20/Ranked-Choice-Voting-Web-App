@@ -9,7 +9,7 @@
    --corner-radius: 8px;
    --box-margin: 40px;
    --primary-box-padding: 1em;
-   --box-height: 60%;
+   --box-height: 70%;
    --box-margin: 40px;
    --voting-area-width: 60%;
    --counter-height: 70px;
@@ -51,6 +51,7 @@
     width: calc(var(--voting-area-width) - var(--box-margin) * 2 - var(--primary-box-padding) * 2);
     position: absolute;
     border-radius: var(--corner-radius);
+    overflow: scroll;
 }
 
 #Sidebar
