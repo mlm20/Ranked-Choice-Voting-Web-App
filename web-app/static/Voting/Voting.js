@@ -56,6 +56,7 @@ const CreateTable = function () {
 
         // create new table row for candidate
         let new_row = document.createElement("tr");
+        new_row.id = name;
 
         // add candidate name to cell 1
         let candidate_name = document.createElement("td");
@@ -108,18 +109,29 @@ next_voter_button.onclick = function () {
     // create object to store votes from 1 voter
     let VoterObject = {};
 
-    candidate_list.forEach(function (rowname) {
+    let i;
+    // loop through rows
+    for (i = 1; i <= num_candidates; i += 1) {
 
-        let RadioButtons = document.getElementsByName(rowname);
-        RadioButtons.forEach(function (RadioButton) {
+        // get name for current row
+        let rowname = candidate_list[i - 1];
+
+        let j;
+        // loop through columns
+        for (j = 1; j <= num_candidates; j += 1) {
+            // loop through radio buttons on row
+            let RadioButton = document.getElementById(
+                String(rowname + "_" + j));
+
+            // add preference number to VoterObject if button is selected
             if (RadioButton.checked === true) {
-                VoterObject[rowname] = Number(final_char(RadioButton.id));
+                VoterObject[rowname] = j;
             }
-        });
+        }
+    }
 
-        // add VoterObject to "votes" array
-        votes.push(VoterObject);
-    });
+    // add VoterObject to "votes" array
+    votes.push(VoterObject);
 
     //// reset radio buttons ////
     candidate_list.forEach(function (rowname) {
