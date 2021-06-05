@@ -3,8 +3,10 @@ const num_candidates = candidate_list.length;
 
 const see_results_button = document.getElementById("SeeResultsButton");
 const table_div = document.getElementById("VotingTableContainer");
+const next_voter_button = document.getElementById("NextVoterButton");
+const vote_counter = document.getElementById("Vote-Counter");
 
-// table creation
+//// table creation ////
 const CreateTable = function () {
 
     // create table element and header
@@ -90,28 +92,59 @@ const CreateTable = function () {
 // call CreateTable()
 window.onload = CreateTable;
 
-// 
+//// make columns mutually exclusive ////
 
 
+//// data collation ////
+let number_of_votes = 0;
+let votes = [];
 
+const final_char = (string) => string.charAt(string.length - 1);
 
+next_voter_button.onclick = function () {
 
+    //// collect data from radio buttons ////
 
+    // create object to store votes from 1 voter
+    let VoterObject = {};
 
-// data collation
+    candidate_list.forEach(function (rowname) {
 
+        let RadioButtons = document.getElementsByName(rowname);
+        RadioButtons.forEach(function (RadioButton) {
+            if (RadioButton.checked === true) {
+                VoterObject[rowname] = Number(final_char(RadioButton.id));
+            }
+        });
 
+        // add VoterObject to "votes" array
+        votes.push(VoterObject);
+    });
 
+    //// reset radio buttons ////
+    candidate_list.forEach(function (rowname) {
+        let RadioButtons = document.getElementsByName(rowname);
+        RadioButtons.forEach(function (button) {
+            button.checked = false;
+        });
+    });
 
-// data sendoff
+    //// increase vote counter by 1 ////
+    number_of_votes += 1;
+    vote_counter.innerHTML = number_of_votes;
+};
 
+// data sendoff function
+const push_to_session_storage = function (input) {
+    let JSON_String = JSON.stringify(input);
+    sessionStorage.setItem("votes", JSON_String);
+};
 
-
-
-
-
-
+// see results button
 see_results_button.onclick = function () {
+    // send voting data to sessionStorage
+    push_to_session_storage(votes);
     console.log("Moved to results page");
+    // send user to results page
     location.href = "../Results/Results.html";
 };
