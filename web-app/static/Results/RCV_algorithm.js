@@ -42,9 +42,40 @@ const getKeyByValue = function (object, value) {
     return Object.keys(object).find((key) => object[key] === value);
 };
 
+// returns object of candidate names, each with value of 0
+const empty_candidate_obj = function (raw_data) {
+    let first_vote = raw_data[0];
+    const keys = Object.keys(first_vote);
+    keys.forEach(function (key) {
+        first_vote[key] = 0;
+    });
+    return first_vote;
+};
+
 // adds up the first choice results from raw data
-// return object of candidate percentages
+// return object containing number of first choice votes each candidate received
 const add_first_choices = function (raw_data) {
+    // create object to store number of first choices
+    const storage_obj = empty_candidate_obj(raw_data);
+
+    // loop through results, adding first choices to storage_obj
+    raw_data.forEach(function (single_voter_obj) {
+        let first_vote_key = getKeyByValue(single_voter_obj, 1);
+        storage_obj[first_vote_key] += 1;
+    });
+
+    return storage_obj;
+};
+
+const percentage_from_round = function (raw_data) {
+    // get obj of first choice votes
+    const num_of_votes = add_first_choices(raw_data);
+
+    // create obj to store percentages in
+    let storage_obj = empty_candidate_obj(raw_data);
+
+    // get total num votes
+    // const total_num_votes = 
 
 };
 
@@ -67,18 +98,9 @@ const eliminate_last_candidate = function (raw_data) {
 
 };
 
-
-
-
-
-
-
-
-
 ////
 // Public Interface
 ////
-
 
 // return an array of objects for results in each runoff round
 Algorithm.results = function (raw_data) {
