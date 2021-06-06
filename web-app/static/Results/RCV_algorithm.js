@@ -37,11 +37,23 @@ const example_raw_data = [
 // Helper Functions
 ////
 
+// returns key from object value
+const getKeyByValue = function (object, value) {
+    return Object.keys(object).find((key) => object[key] === value);
+};
+
 // adds up the first choice results from raw data
 // return object of candidate percentages
 const add_first_choices = function (raw_data) {
 
 };
+
+// returns candidate name with plurality
+const most_votes = function (results_obj) {
+    const max_value = Math.max(...Object.values(results_obj));
+    return getKeyByValue(results_obj, max_value);
+};
+
 
 // returns name of candidate in case of majority
 // else returns null
@@ -70,7 +82,6 @@ const eliminate_last_candidate = function (raw_data) {
 
 // return an array of objects for results in each runoff round
 Algorithm.results = function (raw_data) {
-
     // assign input data to variable
     let current_round_data = raw_data;
 
@@ -86,29 +97,30 @@ Algorithm.results = function (raw_data) {
         // eliminate last place candidate and distribute their ballots
         current_round_data = eliminate_last_candidate(current_round_data);
     }
-
     return results;
 };
 
 // return string of the name of election winner
 Algorithm.name_of_winner = function (raw_data) {
-
     // get object of final round results
     const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
         raw_data).length - 1];
 
-    // loop
-
-    
+    // apply helper function
+    return most_votes(final_round_obj);
 };
 
+// return percentage won by in final round
 Algorithm.percentage_of_winner = function (raw_data) {
+    // get object of final round results
+    const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
+        raw_data).length - 1];
 
+    return final_round_obj.most_votes(final_round_obj);
 };
 
-Algorithm.how_many_rounds = function (raw_data) {
-
-};
+// returns number of rounds data
+Algorithm.how_many_rounds = (raw_data) => Algorithm.results(raw_data).length;
 
 // export module
 export default Object.freeze(Algorithm);
@@ -130,3 +142,5 @@ export default Object.freeze(Algorithm);
 //         "red": 48
 //     }
 // ];
+
+debugger;
