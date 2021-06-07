@@ -157,23 +157,31 @@ const fewest_votes = function (raw_data) {
 // return voter data with the above adjusted
 const eliminate_last_candidate = function (raw_data) {
     const eliminated_candidate_name = fewest_votes(raw_data);
-    const voting_data = [...raw_data];
+    // new array to put updated objects in
+    const new_data = []
 
     // loop over single array containing voting objects
-    voting_data.forEach(function (single_voter_obj) {
+    raw_data.forEach(function (single_voter_obj) {
+
+        // create seperate copy of voter object
+        const voter_obj_copy = Object.assign({}, single_voter_obj);
+
         // loop over object keys
-        Object.keys(single_voter_obj).forEach(function (key) {
+        Object.keys(voter_obj_copy).forEach(function (key) {
             // if voter had eliminated canidate as their first choice
             // shift preferences by 1
-            if (single_voter_obj[eliminated_candidate_name] === 1) {
-                single_voter_obj[key] = single_voter_obj[key] - 1;
+            if (voter_obj_copy[eliminated_candidate_name] === 1) {
+                voter_obj_copy[key] = voter_obj_copy[key] - 1;
             }
 
             // delete entry for eliminated voter
-            delete single_voter_obj[eliminated_candidate_name];
+            delete voter_obj_copy[eliminated_candidate_name];
         });
+
+        // push new object to array
+        new_data.push(voter_obj_copy)
     });
-    return voting_data;
+    return new_data;
 };
 
 ////
