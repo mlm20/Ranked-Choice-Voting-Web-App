@@ -44,7 +44,8 @@ const getKeyByValue = function (object, value) {
 
 // returns object of candidate names, each with value of 0
 const empty_candidate_obj = function (raw_data) {
-    let first_vote = raw_data[0];
+    const input_data = raw_data;
+    let first_vote = {...input_data[0]};
     const keys = Object.keys(first_vote);
     keys.forEach(function (key) {
         first_vote[key] = 0;
@@ -60,10 +61,12 @@ const add_first_choices = function (raw_data) {
 
     // loop through results, adding first choices to storage_obj
     raw_data.forEach(function (single_voter_obj) {
-        let first_vote_key = getKeyByValue(single_voter_obj, Number(1));
-        storage_obj[first_vote_key] += 1;
+        Object.values(single_voter_obj).forEach(function (value) {
+            if (value === 1) {
+                storage_obj[getKeyByValue(single_voter_obj, value)] += 1;
+            }
+        });
     });
-
     return storage_obj;
 };
 
@@ -205,24 +208,6 @@ Algorithm.percentage_of_winner = function (raw_data) {
 Algorithm.how_many_rounds = (raw_data) => Algorithm.results(raw_data).length;
 
 // export module
-export default Object.freeze(Algorithm);
-
-// results = [
-//     {
-//         "blue": 48.2,
-//         "red": 45.1,
-//         "yellow": 5.6,
-//         "green": 1.1
-//     },
-//     {
-//         "blue": 49.9,
-//         "red": 47.2,
-//         "yellow": 5.7
-//     },
-//     {
-//         "blue": 52,
-//         "red": 48
-//     }
-// ];
+// export default Object.freeze(Algorithm);
 
 debugger;
