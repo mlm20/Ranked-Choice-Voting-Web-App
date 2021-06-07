@@ -60,23 +60,29 @@ const add_first_choices = function (raw_data) {
 
     // loop through results, adding first choices to storage_obj
     raw_data.forEach(function (single_voter_obj) {
-        let first_vote_key = getKeyByValue(single_voter_obj, 1);
+        let first_vote_key = getKeyByValue(single_voter_obj, Number(1));
         storage_obj[first_vote_key] += 1;
     });
 
     return storage_obj;
 };
 
+// takes raw data
+// returns obj containing percentage each candidate received that round
 const percentage_from_round = function (raw_data) {
     // get obj of first choice votes
-    const num_of_votes = add_first_choices(raw_data);
+    const first_choice_votes = add_first_choices(raw_data);
 
     // create obj to store percentages in
     let storage_obj = empty_candidate_obj(raw_data);
 
     // get total num votes
-    // const total_num_votes = 
+    const total_num_votes = raw_data.length;
 
+    // do percentages
+    Object.keys(storage_obj).forEach(function (key) {
+        storage_obj[key] = (first_choice_votes[key] / total_num_votes) * 100;
+    });
 };
 
 // returns candidate name with plurality
@@ -87,9 +93,37 @@ const most_votes = function (results_obj) {
 
 
 // returns name of candidate in case of majority
+// returns "DRAW" in case of draw
 // else returns null
 const who_has_majority = function (raw_data) {
+    const percentage_obj = percentage_from_round(raw_data);
 
+    let result_type = "";
+    let fifty_percent_results = 0;
+
+    Object.keys(percentage_obj).forEach(function (key) {
+        // return candidate name in they have a majority
+        if (percentage_obj[key] > 50) {
+            result_type = "MAJORITY";
+            return String(key);
+        }
+        // handle draws
+        if (percentage_obj[key] === 50) {
+            fifty_percent_results += 1;
+        }
+    });
+    // identify draws
+    if (fifty_percent_results === 2) {
+        result_type = "DRAW";
+    }
+    // return "DRAW" in case of draw
+    if (result_type === "DRAW") {
+        return "DRAW";
+    }
+    // else return null
+    if (result_type === "") {
+        return null;
+    }
 };
 
 // eliminates last candidate
