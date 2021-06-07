@@ -44,8 +44,8 @@ const getKeyByValue = function (object, value) {
 
 // returns object of candidate names, each with value of 0
 const empty_candidate_obj = function (raw_data) {
-    const input_data = raw_data;
-    let first_vote = {...input_data[0]};
+    const input_data = Object.assign({}, raw_data);
+    let first_vote = input_data[0];
     const keys = Object.keys(first_vote);
     keys.forEach(function (key) {
         first_vote[key] = 0;
@@ -158,7 +158,7 @@ const fewest_votes = function (raw_data) {
 const eliminate_last_candidate = function (raw_data) {
     const eliminated_candidate_name = fewest_votes(raw_data);
     // new array to put updated objects in
-    const new_data = []
+    const new_data = [];
 
     // loop over single array containing voting objects
     raw_data.forEach(function (single_voter_obj) {
@@ -179,7 +179,7 @@ const eliminate_last_candidate = function (raw_data) {
         });
 
         // push new object to array
-        new_data.push(voter_obj_copy)
+        new_data.push(voter_obj_copy);
     });
     return new_data;
 };
