@@ -91,7 +91,6 @@ const most_votes = function (results_obj) {
     return getKeyByValue(results_obj, max_value);
 };
 
-
 // returns name of candidate in case of majority
 // returns "DRAW" in case of draw
 // else returns null
@@ -126,10 +125,37 @@ const who_has_majority = function (raw_data) {
     }
 };
 
-// eliminates last candidate
-// distributes their ballots
-const eliminate_last_candidate = function (raw_data) {
+// input voting data
+// returns name of candidate with fewest votes
+const fewest_votes = function (raw_data) {
+    const added_votes = add_first_choices(raw_data);
 
+    const min_value = Math.min(...Object.values(added_votes));
+
+    return getKeyByValue(added_votes, min_value);
+};
+
+// eliminates last candidate
+// distributes their ballots to second choice
+// return voter data with the above adjusted
+const eliminate_last_candidate = function (raw_data) {
+    const eliminated_candidate_name = fewest_votes(raw_data);
+    let voting_data = raw_data;
+
+    // loop over single array containing voting objects
+    voting_data.forEach(function (single_voter_obj) {
+        // loop over object keys
+        Object.keys(single_voter_obj).forEach(function (key) {
+            // delete entry for eliminated voter
+            delete single_voter_obj[eliminated_candidate_name];
+
+            // shift preferences by 1
+            if (single_voter_obj[key] >= 1) {
+                single_voter_obj[key] = single_voter_obj[key] - 1;
+            }
+        });
+    });
+    return voting_data;
 };
 
 ////
@@ -148,7 +174,7 @@ Algorithm.results = function (raw_data) {
     while (who_has_majority(current_round_data) === null) {
 
         // add results round to array
-        results.push(add_first_choices(current_round_data));
+        results.push(percentage_from_round(current_round_data));
 
         // eliminate last place candidate and distribute their ballots
         current_round_data = eliminate_last_candidate(current_round_data);
