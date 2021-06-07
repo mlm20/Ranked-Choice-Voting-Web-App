@@ -37,7 +37,7 @@ const CreateTable = function () {
                 return String(index_num + "rd Choice");
             } else {
                 return String(index_num + "th Choice");
-            }   
+            }
         };
         voting_header.innerText = header_text(index_num);
         voting_table_header_row.append(voting_header);
