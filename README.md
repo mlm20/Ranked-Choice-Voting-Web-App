@@ -7,7 +7,7 @@ You should complete the proforma and populate this repository with your project 
 
 * **Repository Creation Check:** Tuesday 4th May 18:00 – Update your CID in this file to check your submission.
 * **Peer Assessment Deadline:** Tuesday 8th June 18:00
-* **Final Submission Deadline:** Thursday 17th June 16:00
+* **Final Submission Deadline:** Friday 18th June 16:00
 
 # Computing 2 Submission Proforma
 
