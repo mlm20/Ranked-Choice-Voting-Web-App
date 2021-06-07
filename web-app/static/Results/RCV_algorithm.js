@@ -28,8 +28,8 @@ const example_raw_data = [
     {
         "blue": 3,
         "red": 4,
-        "purple": 2,
-        "yellow": 1
+        "purple": 1,
+        "yellow": 2
     }
 ];
 
@@ -86,12 +86,7 @@ const percentage_from_round = function (raw_data) {
     Object.keys(storage_obj).forEach(function (key) {
         storage_obj[key] = (first_choice_votes[key] / total_num_votes) * 100;
     });
-};
-
-// returns candidate name with plurality
-const most_votes = function (results_obj) {
-    const max_value = Math.max(...Object.values(results_obj));
-    return getKeyByValue(results_obj, max_value);
+    return storage_obj;
 };
 
 // returns name of candidate in case of majority
@@ -128,9 +123,28 @@ const who_has_majority = function (raw_data) {
     }
 };
 
+// returns candidate name with plurality
+// returns "DRAW" in case of draw
+const most_votes = function (raw_data) {
+
+    if (who_has_majority(raw_data) === "DRAW") {
+        return "DRAW";
+    }
+    const added_votes = add_first_choices(raw_data);
+
+    const max_value = Math.max(...Object.values(added_votes));
+
+    return getKeyByValue(added_votes, max_value);
+};
+
 // input voting data
 // returns name of candidate with fewest votes
+// returns "DRAW" in case of draw
 const fewest_votes = function (raw_data) {
+
+    if (who_has_majority(raw_data) === "DRAW") {
+        return "DRAW";
+    }
     const added_votes = add_first_choices(raw_data);
 
     const min_value = Math.min(...Object.values(added_votes));
@@ -143,19 +157,20 @@ const fewest_votes = function (raw_data) {
 // return voter data with the above adjusted
 const eliminate_last_candidate = function (raw_data) {
     const eliminated_candidate_name = fewest_votes(raw_data);
-    let voting_data = raw_data;
+    const voting_data = [...raw_data];
 
     // loop over single array containing voting objects
     voting_data.forEach(function (single_voter_obj) {
         // loop over object keys
         Object.keys(single_voter_obj).forEach(function (key) {
-            // delete entry for eliminated voter
-            delete single_voter_obj[eliminated_candidate_name];
-
+            // if voter had eliminated canidate as their first choice
             // shift preferences by 1
-            if (single_voter_obj[key] >= 1) {
+            if (single_voter_obj[eliminated_candidate_name] === 1) {
                 single_voter_obj[key] = single_voter_obj[key] - 1;
             }
+
+            // delete entry for eliminated voter
+            delete single_voter_obj[eliminated_candidate_name];
         });
     });
     return voting_data;
