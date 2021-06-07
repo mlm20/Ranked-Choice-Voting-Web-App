@@ -3,10 +3,6 @@ const start_election = document.getElementById("start-election-button");
 const candidate_input_text = document.getElementById("candidate-input-field");
 const candidate_list_area = document.getElementById("list");
 
-const cloneTemplate = function (id) {
-    return document.importNode(document.getElementById(id).content, true);
-};
-
 const push_to_session_storage = function (input) {
     let JSON_String = JSON.stringify(input);
     sessionStorage.setItem("candidate_list", JSON_String);
