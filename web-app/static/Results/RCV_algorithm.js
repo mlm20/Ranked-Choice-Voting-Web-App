@@ -42,9 +42,12 @@ const getKeyByValue = function (object, value) {
     return Object.keys(object).find((key) => object[key] === value);
 };
 
+// copy object
+const copy_obj = (input_object) => Object.assign({}, input_object);
+
 // returns object of candidate names, each with value of 0
 const empty_candidate_obj = function (raw_data) {
-    const input_data = Object.assign({}, raw_data);
+    const input_data = copy_obj(raw_data);
     let first_vote = input_data[0];
     const keys = Object.keys(first_vote);
     keys.forEach(function (key) {
@@ -164,7 +167,7 @@ const eliminate_last_candidate = function (raw_data) {
     raw_data.forEach(function (single_voter_obj) {
 
         // create seperate copy of voter object
-        const voter_obj_copy = Object.assign({}, single_voter_obj);
+        const voter_obj_copy = copy_obj(single_voter_obj);
 
         // loop over object keys
         Object.keys(voter_obj_copy).forEach(function (key) {
@@ -174,7 +177,7 @@ const eliminate_last_candidate = function (raw_data) {
                 voter_obj_copy[key] = voter_obj_copy[key] - 1;
             }
 
-            // delete entry for eliminated voter
+            // delete entry for voter to be eliminated
             delete voter_obj_copy[eliminated_candidate_name];
         });
 
@@ -201,6 +204,11 @@ Algorithm.results = function (raw_data) {
 
         // add results round to array
         results.push(percentage_from_round(current_round_data));
+
+        // break if draw
+        if (who_has_majority(current_round_data) === "DRAW") {
+            break;
+        }
 
         // eliminate last place candidate and distribute their ballots
         current_round_data = eliminate_last_candidate(current_round_data);
@@ -231,6 +239,6 @@ Algorithm.percentage_of_winner = function (raw_data) {
 Algorithm.how_many_rounds = (raw_data) => Algorithm.results(raw_data).length;
 
 // export module
-// export default Object.freeze(Algorithm);
+export default Object.freeze(Algorithm);
 
 debugger;
