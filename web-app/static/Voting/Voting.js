@@ -143,7 +143,7 @@ next_voter_button.onclick = function () {
 
     //// increase vote counter by 1 ////
     number_of_votes += 1;
-    vote_counter.innerHTML = number_of_votes;
+    vote_counter.textContent = number_of_votes;
 };
 
 // data sendoff function
