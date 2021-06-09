@@ -52,7 +52,7 @@ const CreateTable = function () {
     voting_table_body.id = "voting_table_body";
 
     // create table body
-    candidate_list.forEach(function (name, index) {
+    candidate_list.forEach(function (name) {
 
         // create new table row for candidate
         let new_row = document.createElement("tr");
