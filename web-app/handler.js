@@ -1,3 +1,4 @@
+import Algorithm from "./RCV_algorithm";
 const Handler = Object.create(null);
 
 
