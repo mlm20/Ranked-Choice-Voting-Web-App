@@ -193,6 +193,7 @@ Algorithm.results = function (raw_data) {
 };
 
 // return string of the name of election winner
+// returns "DRAW" in case of draw
 Algorithm.name_of_winner = function (raw_data) {
     // get object of final round results
     const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
