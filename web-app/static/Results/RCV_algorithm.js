@@ -28,8 +28,8 @@ const example_raw_data = [
     {
         "blue": 3,
         "red": 4,
-        "purple": 1,
-        "yellow": 2
+        "purple": 2,
+        "yellow": 1
     }
 ];
 
@@ -47,8 +47,7 @@ const copy_obj = (input_object) => Object.assign({}, input_object);
 
 // returns object of candidate names, each with value of 0
 const empty_candidate_obj = function (raw_data) {
-    const input_data = copy_obj(raw_data);
-    let first_vote = input_data[0];
+    let first_vote = copy_obj(raw_data[0]); // avoids changes to reference obj
     const keys = Object.keys(first_vote);
     keys.forEach(function (key) {
         first_vote[key] = 0;
@@ -93,7 +92,7 @@ const percentage_from_round = function (raw_data) {
 };
 
 // returns name of candidate in case of majority
-// returns "DRAW" in case of draw
+// returns "DRAW" in case of draw in two horse race
 // else returns null
 const who_has_majority = function (raw_data) {
     const percentage_obj = percentage_from_round(raw_data);
@@ -113,7 +112,7 @@ const who_has_majority = function (raw_data) {
         }
     });
     // identify draws
-    if (fifty_percent_results === 2) {
+    if (fifty_percent_results === 2 && Object.keys(raw_data[0]).length === 2) {
         result_type = "DRAW";
     }
     // return "DRAW" in case of draw
@@ -126,28 +125,33 @@ const who_has_majority = function (raw_data) {
     }
 };
 
+// takes in Obj of percentage results
 // returns candidate name with plurality
 // returns "DRAW" in case of draw
-const most_votes = function (raw_data) {
-
-    if (who_has_majority(raw_data) === "DRAW") {
+const most_votes = function (results_obj) {
+    //// detect draw ////
+    let fifty_percent_results = 0;
+    Object.keys(results_obj).forEach(function (key) {
+        if (results_obj[key] === 50) {
+            fifty_percent_results += 1;
+        }
+    });
+    // return "DRAW" in case of draw
+    if (fifty_percent_results === 2 && Object.keys(results_obj).length === 2) {
         return "DRAW";
     }
-    const added_votes = add_first_choices(raw_data);
 
-    const max_value = Math.max(...Object.values(added_votes));
-
-    return getKeyByValue(added_votes, max_value);
+    //// return candidate name with plurality
+    const max_value = Math.max(...Object.values(results_obj));
+    return getKeyByValue(results_obj, max_value);
 };
 
 // input voting data
 // returns name of candidate with fewest votes
-// returns "DRAW" in case of draw
+// if there are multiple candidates with the fewest votes, choose a random one
+// returns "DRAW" in case of 50:50 draw
 const fewest_votes = function (raw_data) {
 
-    if (who_has_majority(raw_data) === "DRAW") {
-        return "DRAW";
-    }
     const added_votes = add_first_choices(raw_data);
 
     const min_value = Math.min(...Object.values(added_votes));
@@ -205,13 +209,14 @@ Algorithm.results = function (raw_data) {
         // add results round to array
         results.push(percentage_from_round(current_round_data));
 
-        // break if draw
-        if (who_has_majority(current_round_data) === "DRAW") {
-            break;
-        }
-
         // eliminate last place candidate and distribute their ballots
         current_round_data = eliminate_last_candidate(current_round_data);
+
+        // end loop in case of draw
+        if (who_has_majority(current_round_data) === "DRAW") {
+            results.push(percentage_from_round(current_round_data));
+            break;
+        }
     }
     return results;
 };
@@ -227,12 +232,19 @@ Algorithm.name_of_winner = function (raw_data) {
 };
 
 // return percentage won by in final round
+// returns "DRAW" in case of draw
 Algorithm.percentage_of_winner = function (raw_data) {
     // get object of final round results
     const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
         raw_data).length - 1];
 
-    return final_round_obj.most_votes(final_round_obj);
+    // handle draws
+    if (most_votes(final_round_obj) === "DRAW") {
+        return "DRAW";
+    }
+
+    // regular output
+    return final_round_obj[most_votes(final_round_obj)];
 };
 
 // returns number of rounds data
