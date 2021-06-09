@@ -14,29 +14,24 @@
 
 <main id="main">
     <div id="ResultAnnouncement">
-        Placeholder for results announcement
+        <div id="ElectionSummary">
+            Joe Biden won with 51.3% of the vote after 3 rounds.
+        </div>
+        <div id="ElectionTableContainer">
+            ElectionTableContainer Placeholder
+        </div>       
     </div>
 
-    <div id="StoreResult">
-        <p>
-            To store the election results on our database, please provide a name for the election.
-            The election results will be accessible with this name.
-        </p>
-        <form id="StoreResultForm">
+    <div id="StoreResultBox">
+        To store the election results on our database, please provide a name for the election.
+        The election results will be accessible with this name.
+        <div id="SubmissionArea">
             <label for="StoreText">
-                Election Name:
+                Election Name
             </label>
             <input type="text" id="StoreText">
             <input type="button" id="StoreButton" name="StoreButton" value="Store">
-
-        </form>
-    </div>
-
-    <hr>
-
-    <div id="ResultsExplained">
-        Placeholder text for results explaination - idea is to get some graphs and data for each instant 
-        runoff round.
+        </div>
     </div>
 </main>
 </html>
