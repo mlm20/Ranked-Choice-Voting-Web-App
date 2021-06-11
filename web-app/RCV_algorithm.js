@@ -197,7 +197,8 @@ Algorithm.results = function (raw_data) {
 Algorithm.name_of_winner = function (raw_data) {
     // get object of final round results
     const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
-        raw_data).length - 1];
+        raw_data
+    ).length - 1];
 
     // apply helper function
     return most_votes(final_round_obj);
@@ -208,7 +209,8 @@ Algorithm.name_of_winner = function (raw_data) {
 Algorithm.percentage_of_winner = function (raw_data) {
     // get object of final round results
     const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
-        raw_data).length - 1];
+        raw_data
+    ).length - 1];
 
     // handle draws
     if (most_votes(final_round_obj) === "DRAW") {
