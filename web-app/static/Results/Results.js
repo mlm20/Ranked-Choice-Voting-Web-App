@@ -13,68 +13,28 @@ const raw_voting_data = JSON.parse(sessionStorage.votes);
 
 const table_div = document.getElementById("ElectionTableContainer");
 const election_summary = document.getElementById("ElectionSummary");
-const text_box = document.getElementById("StoreText");
-const store_button = document.getElementById("StoreButton");
 
 ////
 // Algorithm functions from server
 ////
-
-// declare output obj for ajax
-let ajax_result_obj;
 
 // query the server
 Ajax.query({
     "type": "results",
     "raw_data": raw_voting_data
 }).then(function (response_object) {
-    ajax_result_obj = response_object;
+    // store ajax outputs in variables
+    const results = response_object.response.results;
+    const name_of_winner = response_object.response.name_of_winner;
+    const percentage_of_winner = response_object.response.percentage_of_winner;
+    const how_many_rounds = response_object.response.how_many_rounds;
 
-});
+    const draw_can1 = Object.keys(results[results.length - 1])[0];
+    const draw_can2 = Object.keys(results[results.length - 1])[1];
 
-////
-// Store Algorithm function outputs in variables
-////
-
-// direct Algorithm method outputs
-const results = ajax_result_obj.results;
-const name_of_winner = ajax_result_obj.name_of_winner;
-const percentage_of_winner = ajax_result_obj.percentage_of_winner;
-const how_many_rounds = ajax_result_obj.how_many_rounds;
-
-// other variable calculation
-const draw_can1 = Object.keys(results[results.length - 1])[0];
-const draw_can2 = Object.keys(results[results.length - 1])[1];
-
-////
-// Results summary string
-////
-
-// determine whether round(s) is plural
-let round_or_rounds;
-if (how_many_rounds === 1) {
-    round_or_rounds = "round";
-} else {
-    round_or_rounds = "rounds";
-}
-
-// set textContent of results summary
-if (name_of_winner === "DRAW") {
-    election_summary.textContent = `The election ended in a draw between ${
-        draw_can1} and ${draw_can2}`;
-} else {
-    election_summary.textContent = `${name_of_winner} won with ${
-        percentage_of_winner}% of the vote after ${
-        how_many_rounds} ${round_or_rounds}`;
-}
-
-////
-// Results table
-////
-
-// create table element and header
-
-const create_table = function () {
+    ////
+    // Make voting table
+    ////
 
     let results_table = document.createElement("table");
     results_table.id = "results_table";
@@ -145,6 +105,26 @@ const create_table = function () {
 
     // append table to div
     table_div.append(results_table);
-};
 
-window.onload = create_table;
+    ////
+    // Summarise Election Results
+    ////
+
+    // determine whether round(s) is plural
+    let round_or_rounds;
+    if (how_many_rounds === 1) {
+        round_or_rounds = "round";
+    } else {
+        round_or_rounds = "rounds";
+    }
+
+    // set textContent of results summary
+    if (name_of_winner === "DRAW") {
+        election_summary.textContent = `The election ended in a draw between ${
+            draw_can1} and ${draw_can2}`;
+    } else {
+        election_summary.textContent = `${name_of_winner} won with ${
+            percentage_of_winner}% of the vote after ${
+            how_many_rounds} ${round_or_rounds}`;
+    }
+});

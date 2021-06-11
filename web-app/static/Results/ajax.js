@@ -7,7 +7,7 @@ Ajax.query = function (request_object) {
 
     const body = JSON.stringify(request_object);
 
-    fetch("/", {
+    return fetch("/", {
         "method": "POST",
         "body": body,
         "headers": {
