@@ -1,3 +1,5 @@
+import Ajax from "./ajax.js";
+
 ////
 // variables from sessionStorage
 ////
@@ -18,16 +20,27 @@ const store_button = document.getElementById("StoreButton");
 // Algorithm functions from server
 ////
 
+// declare output obj for ajax
+let ajax_result_obj;
+
+// query the server
+Ajax.query({
+    "type": "results",
+    "raw_data": raw_voting_data
+}).then(function (response_object) {
+    ajax_result_obj = response_object;
+
+});
 
 ////
 // Store Algorithm function outputs in variables
 ////
 
 // direct Algorithm method outputs
-const results = Algorithm.results(raw_voting_data);
-const name_of_winner = Algorithm.name_of_winner(raw_voting_data);
-const percentage_of_winner = Algorithm.percentage_of_winner(raw_voting_data);
-const how_many_rounds = Algorithm.how_many_rounds(raw_voting_data);
+const results = ajax_result_obj.results;
+const name_of_winner = ajax_result_obj.name_of_winner;
+const percentage_of_winner = ajax_result_obj.percentage_of_winner;
+const how_many_rounds = ajax_result_obj.how_many_rounds;
 
 // other variable calculation
 const draw_can1 = Object.keys(results[results.length - 1])[0];
@@ -52,7 +65,7 @@ if (name_of_winner === "DRAW") {
 } else {
     election_summary.textContent = `${name_of_winner} won with ${
         percentage_of_winner}% of the vote after ${
-            how_many_rounds} ${round_or_rounds}`;
+        how_many_rounds} ${round_or_rounds}`;
 }
 
 ////
@@ -135,7 +148,3 @@ const create_table = function () {
 };
 
 window.onload = create_table;
-
-////
-// Database storage
-////
