@@ -9,7 +9,7 @@
    --corner-radius: 8px;
    --box-margin: 40px;
    --primary-box-padding: 1em;
-   --box-height: 70%;
+   --box-height: 90%;
    --box-margin: 40px;
    --results-box-width: 60%;
    --counter-height: 70px;
@@ -42,6 +42,7 @@
     position: absolute;
     padding: var(--box-margin);
     /* background-color: aquamarine; */
+    box-sizing: border-box;
 }
 
 #ResultAnnouncement
@@ -49,23 +50,10 @@
     border: 2px grey solid;
     background-color: bisque;
     padding: var(--primary-box-padding);
-    height: calc(var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) * 2);
-    width: calc(var(--results-box-width) - var(--box-margin) * 2 - var(--primary-box-padding) * 2);
-    position: absolute;
+    height: var(--box-height);
+    width: var(--results-box-width);
     border-radius: var(--corner-radius);
-    overflow: scroll;
-}
-
-#StoreResultBox
-{
-    border: 2px grey solid;
-    padding: var(--primary-box-padding);
-    background-color: yellow;
-    height: calc(var(--box-height) + var(--box-margin) * 2 -  var(--primary-box-padding) * 2);
-    width: calc(100% - (var(--box-margin) * 2) - var(--results-box-width) - 8% - var(--primary-box-padding) * 2);
-    position: absolute;
-    left: var(--results-box-width);
-    border-radius: var(--corner-radius);
+    margin: auto;
 }
 
 #ElectionSummary
@@ -82,10 +70,4 @@
 {
     background-color: chartreuse;
     height: calc(100% - var(--summary-height));
-}
-
-#SubmissionArea
-{
-    width: 100%;
-    margin-top: var(--submission-box-height);
 }
