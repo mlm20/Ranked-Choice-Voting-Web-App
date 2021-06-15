@@ -23,6 +23,7 @@ Ajax.query({
     "type": "results",
     "raw_data": raw_voting_data
 }).then(function (response_object) {
+    console.log(".then function");
     // store ajax outputs in variables
     const results = response_object.response.results;
     const name_of_winner = response_object.response.name_of_winner;

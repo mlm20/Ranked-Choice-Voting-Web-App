@@ -68,32 +68,27 @@ const percentage_from_round = function (raw_data) {
 const who_has_majority = function (raw_data) {
     const percentage_obj = percentage_from_round(raw_data);
 
-    let result_type = "";
     let fifty_percent_results = 0;
 
     Object.keys(percentage_obj).forEach(function (key) {
         // return candidate name in they have a majority
         if (percentage_obj[key] > 50) {
-            result_type = "MAJORITY";
             return String(key);
         }
-        // handle draws
+
+        // detect draws
         if (percentage_obj[key] === 50) {
             fifty_percent_results += 1;
         }
     });
-    // identify draws
-    if (fifty_percent_results === 2 && Object.keys(raw_data[0]).length === 2) {
-        result_type = "DRAW";
-    }
+
     // return "DRAW" in case of draw
-    if (result_type === "DRAW") {
+    if (fifty_percent_results === 2 && Object.keys(raw_data[0]).length === 2) {
         return "DRAW";
     }
+
     // else return null
-    if (result_type === "") {
-        return null;
-    }
+    return null;
 };
 
 // takes in Obj of percentage results
