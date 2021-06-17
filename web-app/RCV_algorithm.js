@@ -138,12 +138,19 @@ const eliminate_last_candidate = function (raw_data) {
 
         // create seperate copy of voter object
         const voter_obj_copy = copy_obj(single_voter_obj);
+        let elim_can_value = 0;
 
         // loop over object keys
         Object.keys(voter_obj_copy).forEach(function (key) {
-            // if voter had eliminated canidate as their first choice
-            // shift preferences by 1
-            if (voter_obj_copy[eliminated_candidate_name] === 1) {
+            // shift preferences by one for candidates prefered
+            // less than the eliminated candidate
+            const value = voter_obj_copy[key];
+
+            if (elim_can_value === 0) {
+                elim_can_value = voter_obj_copy[eliminated_candidate_name];
+            }
+
+            if (value > elim_can_value) {
                 voter_obj_copy[key] = voter_obj_copy[key] - 1;
             }
 
@@ -221,3 +228,5 @@ Algorithm.how_many_rounds = (raw_data) => Algorithm.results(raw_data).length;
 
 // export module
 export default Object.freeze(Algorithm);
+
+debugger;
