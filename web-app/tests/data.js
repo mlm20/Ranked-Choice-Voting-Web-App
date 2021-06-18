@@ -1,6 +1,6 @@
 const Data = Object.create(null);
 
-Data.draw = [
+Data.nowinner = [
     {
         "blue": 4,
         "red": 1,
@@ -155,18 +155,72 @@ Data.victory = [
     }
 ];
 
-Data.two = [
-    {red: 1, purple: 2},
-    {red: 1, purple: 2},
-    {red: 2, purple: 1},
-    {red: 1, purple: 2},
-    {red: 1, purple: 2},
-    {red: 1, purple: 2},
-    {red: 2, purple: 1},
-    {red: 2, purple: 1},
-    {red: 2, purple: 1},
-    {red: 2, purple: 1},
-    {red: 2, purple: 1}
+Data.first_round_maj = [
+    {red: 1, yellow: 2},
+    {red: 1, yellow: 2},
+    {red: 2, yellow: 1},
+    {red: 2, yellow: 1},
+    {red: 2, yellow: 1},
+    {red: 1, yellow: 2},
+    {red: 1, yellow: 2},
+    {red: 2, yellow: 1},
+    {red: 2, yellow: 1},
+    {red: 1, yellow: 2},
+    {red: 2, yellow: 1}
+];
+
+////
+// Expected Results Outputs
+////
+
+Data.nowinner_results = [
+    {
+        "blue": 50 / 3,
+        "red": 25,
+        "yellow": 100 / 3,
+        "pink": 25
+    },
+    {
+        "red": 100 / 3,
+        "yellow": 125 / 3,
+        "pink": 25
+    },
+    {
+        "red": 50,
+        "yellow": 50
+    }
+];
+
+Data.first_round_maj_results = [
+    {
+        "red": 500 / 11,
+        "yellow": 600 / 11
+    }
+];
+
+Data.victory_results = [
+    {
+        "red": 300 / 11,
+        "blue": 200 / 11,
+        "yellow": 200 / 11,
+        "purple": 200 / 11,
+        "pink": 200 / 11
+    },
+    {
+        "red": 400 / 11,
+        "yellow": 200 / 11,
+        "purple": 300 / 11,
+        "pink": 200 / 11
+    },
+    {
+        "red": 500 / 11,
+        "purple": 400 / 11,
+        "pink": 200 / 11
+    },
+    {
+        "red": 500 / 11,
+        "purple": 600 / 11
+    }
 ];
 
 export default Object.freeze(Data);
