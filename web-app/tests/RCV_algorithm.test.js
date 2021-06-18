@@ -23,7 +23,8 @@ describe("function - Algorithm.results", function () {
 
             const output = Algorithm.results(input_data);
 
-            if (expected_output !== output) {
+            // in order to compare two Objects they had to be stringified
+            if (JSON.stringify(expected_output) !== JSON.stringify(output)) {
                 throw (
                     `Expected "${input_data}" to output as ` +
                     `"${expected_output}" instead we got "${output}"`
@@ -74,8 +75,8 @@ describe("function - percentage_of_winner", function () {
     ), function () {
 
         const examples = [
-            [Data.first_round_maj, 600 / 11],
-            [Data.victory, 600 / 11]
+            [Data.first_round_maj, 54.54545454545454],
+            [Data.victory, 54.54545454545454]
         ];
 
         examples.forEach(function ([input_data, percentage]) {
