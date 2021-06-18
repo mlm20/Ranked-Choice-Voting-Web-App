@@ -102,6 +102,7 @@
 #seperator
 {
     height: var(--seperator);
+    padding-top: 3px;
 }
 
 #NextVoterButton
