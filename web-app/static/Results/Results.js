@@ -33,6 +33,11 @@ Ajax.query({
     const draw_can1 = Object.keys(results[results.length - 1])[0];
     const draw_can2 = Object.keys(results[results.length - 1])[1];
 
+    console.log(results);
+    console.log(name_of_winner);
+    console.log(percentage_of_winner);
+    console.log(how_many_rounds);
+
     ////
     // Make voting table
     ////
@@ -89,8 +94,8 @@ Ajax.query({
             // fill cell with percentage if candidate was present that round
             // leave blank if candidate was already eliminated
             if (results[i - 1].hasOwnProperty(candidate_list[j - 1])) {
-                cell.textContent = String(results[i - 1][candidate_list[
-                    j - 1]] + " %");
+                cell.textContent = String((Math.round(results[i - 1][
+                    candidate_list[j - 1]] * 100) / 100) + " %");
             }
 
             // add cell to row

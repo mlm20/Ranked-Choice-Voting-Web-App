@@ -230,5 +230,3 @@ Algorithm.how_many_rounds = (raw_data) => Algorithm.results(raw_data).length;
 
 // export module
 export default Object.freeze(Algorithm);
-
-debugger;
