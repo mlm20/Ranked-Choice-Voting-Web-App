@@ -69,7 +69,6 @@ const who_has_majority = function (raw_data) {
     const percentage_obj = percentage_from_round(raw_data);
 
     let fifty_percent_results = 0;
-    console.log(Object.keys(percentage_obj));
 
     // create variable for output of function, null is default
     let function_output = null;
@@ -77,7 +76,6 @@ const who_has_majority = function (raw_data) {
     Object.keys(percentage_obj).forEach(function (key) {
         // return candidate name if they have a majority
         if (percentage_obj[key] > 50) {
-            console.log("return key");
             function_output = key;
         }
 
@@ -181,21 +179,20 @@ Algorithm.results = function (raw_data) {
     // array to store results objects
     const results = [];
 
+    // add initial round of results to array
+    results.push(percentage_from_round(current_round_data));
+
     // while no candidate has a majority
     while (who_has_majority(current_round_data) === null) {
 
-        // add results round to array
-        results.push(percentage_from_round(current_round_data));
-
-        // eliminate last place candidate and distribute their ballots
+        // eliminate candidate in last place
         current_round_data = eliminate_last_candidate(current_round_data);
 
-        // end loop in case of draw
-        if (who_has_majority(current_round_data) === "DRAW") {
-            results.push(percentage_from_round(current_round_data));
-            break;
-        }
+        // add round to array
+        results.push(percentage_from_round(current_round_data));
     }
+
+    // return results array
     return results;
 };
 
