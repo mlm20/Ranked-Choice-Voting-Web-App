@@ -130,7 +130,8 @@ Ajax.query({
             draw_can1} and ${draw_can2}`;
     } else {
         election_summary.textContent = `${name_of_winner} won with ${
-            percentage_of_winner}% of the vote after ${
+                Math.round(percentage_of_winner * 100) / 100
+            }% of the vote after ${
             how_many_rounds} ${round_or_rounds}`;
     }
 });
