@@ -8,7 +8,6 @@ const vote_counter = document.getElementById("Vote-Counter");
 
 //// table creation ////
 const CreateTable = function () {
-
     // create table element and header
     let voting_table = document.createElement("table");
     voting_table.id = "voting_table";
@@ -53,7 +52,6 @@ const CreateTable = function () {
 
     // create table body
     candidate_list.forEach(function (name) {
-
         // create new table row for candidate
         let new_row = document.createElement("tr");
         new_row.id = name;
@@ -95,7 +93,6 @@ window.onload = CreateTable;
 
 //// make columns mutually exclusive ////
 
-
 //// data collation ////
 let number_of_votes = 0;
 let votes = [];
@@ -103,7 +100,6 @@ let votes = [];
 const final_char = (string) => string.charAt(string.length - 1);
 
 next_voter_button.onclick = function () {
-
     //// collect data from radio buttons ////
 
     // create object to store votes from 1 voter
@@ -112,7 +108,6 @@ next_voter_button.onclick = function () {
     let i;
     // loop through rows
     for (i = 1; i <= num_candidates; i += 1) {
-
         // get name for current row
         let rowname = candidate_list[i - 1];
 
@@ -121,7 +116,8 @@ next_voter_button.onclick = function () {
         for (j = 1; j <= num_candidates; j += 1) {
             // loop through radio buttons on row
             let RadioButton = document.getElementById(
-                String(rowname + "_" + j));
+                String(rowname + "_" + j)
+            );
 
             // add preference number to VoterObject if button is selected
             if (RadioButton.checked === true) {

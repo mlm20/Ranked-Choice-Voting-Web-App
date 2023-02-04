@@ -1,70 +1,83 @@
 <!-- Header -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-gb">
-<meta charset="utf-8">
-<title>Ranked Choice Voting Calculator</title>
-<link rel="stylesheet" href="default.css">
-<link rel="shortcut icon" href="favicon.png">
-<script type="module" src="main.js"></script>
+    <meta charset="utf-8" />
+    <title>Ranked Choice Voting Calculator</title>
+    <link rel="stylesheet" href="default.css" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <script type="module" src="main.js"></script>
 
+    <!-- Document Start -->
+    <div id="title">
+        <h1>
+            Ranked Choice Voting<br />
+            (Instant Runoff) <br />
+            Calculator
+        </h1>
+    </div>
 
-<!-- Document Start -->
-<div id="title">
-    <h1>Ranked Choice Voting<br> (Instant Runoff) <br> Calculator</h1>
-</div>
-
-<main id="main">
-
-    <div id="CandidateBox">
-        <div id="Candidate-Title">
-            <h2>Candidate Setup</h2>
-        </div>
-
-        <div id="Candidate_list">
-            <h3>List of Candidates</h3>
-            <ul id="list">
-                
-            </ul>      
-        </div>
-
-        <div id="Input-Container">
-            <div id="Input-box-label">
-                Input the candidates/options for the RCV election using the field below (they should appear
-                on the side).<br><br>
-                Once ready, start the election with the button at the bottom of this page.
+    <main id="main">
+        <div id="CandidateBox">
+            <div id="Candidate-Title">
+                <h2>Candidate Setup</h2>
             </div>
 
-            <input type="text" id="candidate-input-field">
-            <input type="button" value="Add Candidate" id="add-candidate-button">
-            
-            <input type="button" value="Start Election" id="start-election-button">
+            <div id="Candidate_list">
+                <h3>List of Candidates</h3>
+                <ul id="list"></ul>
+            </div>
+
+            <div id="Input-Container">
+                <div id="Input-box-label">
+                    Input the candidates/options for the RCV election using the
+                    field below (they should appear on the side).<br /><br />
+                    Once ready, start the election with the button at the bottom
+                    of this page.
+                </div>
+
+                <input type="text" id="candidate-input-field" />
+                <input
+                    type="button"
+                    value="Add Candidate"
+                    id="add-candidate-button"
+                />
+
+                <input
+                    type="button"
+                    value="Start Election"
+                    id="start-election-button"
+                />
+            </div>
         </div>
-    </div>
 
-    <div id="AboutBox">
-        <h2>
-            About
-        </h2>
+        <div id="AboutBox">
+            <h2>About</h2>
 
-        <p>
-            Ranked Choice Voting (RCV) helps to elect a candidate who reflects a majority of voters in a single 
-            election even when several viable candidates are in the race.
-            RCV is a way to ensure elections are fair for all voters. It allows 
-            voters the option to rank candidates in order of preference: one, two, three, and so forth.
-        </p>
+            <p>
+                Ranked Choice Voting (RCV) helps to elect a candidate who
+                reflects a majority of voters in a single election even when
+                several viable candidates are in the race. RCV is a way to
+                ensure elections are fair for all voters. It allows voters the
+                option to rank candidates in order of preference: one, two,
+                three, and so forth.
+            </p>
 
-        <p>
-            This calculator is for races where voters select one winner. If a candidate receives more than half of the first choices,
-             that candidate wins, just like in any other election. However, if there is no majority winner after
-              counting first choices, the race is decided by an "instant runoff." The candidate with the fewest 
-              votes is eliminated, and voters who picked that candidate as ‘number 1’ will have their votes count 
-              for their next choice. This process continues until there’s a majority winner or a candidate won with 
-              more than half of the vote. 
-        </p>
+            <p>
+                This calculator is for races where voters select one winner. If
+                a candidate receives more than half of the first choices, that
+                candidate wins, just like in any other election. However, if
+                there is no majority winner after counting first choices, the
+                race is decided by an "instant runoff." The candidate with the
+                fewest votes is eliminated, and voters who picked that candidate
+                as ‘number 1’ will have their votes count for their next choice.
+                This process continues until there’s a majority winner or a
+                candidate won with more than half of the vote.
+            </p>
 
-        <p>
-            Reference: <a href="https://www.fairvote.org/how_rcv_works">FairVote</a>           
-        </p>
-    </div>
-</main>
+            <p>
+                Reference:
+                <a href="https://www.fairvote.org/how_rcv_works">FairVote</a>
+            </p>
+        </div>
+    </main>
 </html>

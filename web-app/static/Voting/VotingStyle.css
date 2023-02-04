@@ -1,29 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
-:root
-{
-   /* Title Variables */
-   --banner-height: 140px; /* KEEP THIS */
-   --banner-width: 200px;
-   --title-box-padding: 1px;
-   --corner-radius: 8px;
-   --box-margin: 40px;
-   --primary-box-padding: 1em;
-   --box-height: 70%;
-   --box-margin: 40px;
-   --voting-area-width: 60%;
-   --counter-height: 70px;
-   --seperator: 10%;
-   --button-width: 40%;
+:root {
+    /* Title Variables */
+    --banner-height: 140px; /* KEEP THIS */
+    --banner-width: 200px;
+    --title-box-padding: 1px;
+    --corner-radius: 8px;
+    --box-margin: 40px;
+    --primary-box-padding: 1em;
+    --box-height: 70%;
+    --box-margin: 40px;
+    --voting-area-width: 60%;
+    --counter-height: 70px;
+    --seperator: 10%;
+    --button-width: 40%;
 }
 
-#title
-{
+#title {
     margin: auto;
     padding-top: var(--title-box-padding);
     padding-bottom: var(--title-box-padding);
     background-color: aqua;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-weight: bold;
     text-align: center;
     width: var(--banner-width);
@@ -31,10 +29,9 @@
     border: 2px grey solid;
 }
 
-#main
-{
+#main {
     align-items: top;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     width: 100%;
     height: calc(100% - var(--banner-height));
     position: absolute;
@@ -42,39 +39,47 @@
     /* background-color: aquamarine; */
 }
 
-#VotingTableContainer
-{
+#VotingTableContainer {
     border: 2px grey solid;
     background-color: bisque;
-    height: calc(var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) * 2);
-    width: calc(var(--voting-area-width) - var(--box-margin) * 2 - var(--primary-box-padding) * 2);
+    height: calc(
+        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
+            2
+    );
+    width: calc(
+        var(--voting-area-width) - var(--box-margin) * 2 -
+            var(--primary-box-padding) * 2
+    );
     position: absolute;
     border-radius: var(--corner-radius);
     /* overflow: scroll; */
 }
 
-#Sidebar
-{
+#Sidebar {
     border: 2px grey solid;
     padding: var(--primary-box-padding);
     background-color: yellow;
-    height: calc(var(--box-height) + var(--box-margin) * 2 -  var(--primary-box-padding) * 2);
-    width: calc(100% - (var(--box-margin) * 2) - var(--voting-area-width) - 8% - var(--primary-box-padding) * 2);
+    height: calc(
+        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
+            2
+    );
+    width: calc(
+        100% - (var(--box-margin) * 2) - var(--voting-area-width) - 8% -
+            var(--primary-box-padding) * 2
+    );
     position: absolute;
     left: var(--voting-area-width);
     border-radius: var(--corner-radius);
 }
 
-#VoteCounterArea
-{
+#VoteCounterArea {
     background-color: coral;
     width: 100%;
     height: calc(var(--counter-height) + 5%);
     border-radius: var(--corner-radius);
 }
 
-#CounterLabel
-{
+#CounterLabel {
     width: calc(100% - var(--counter-height));
     /* background-color: darkseagreen; */
     height: 100%;
@@ -83,9 +88,7 @@
     font-weight: bold;
 }
 
-
-#Vote-Counter
-{   
+#Vote-Counter {
     background-color: fuchsia;
     height: var(--counter-height);
     width: var(--counter-height);
@@ -96,94 +99,81 @@
     border: 2px grey solid;
     text-align: center;
     line-height: var(--counter-height);
-    font-size:x-large;
+    font-size: x-large;
 }
 
-#seperator
-{
+#seperator {
     height: var(--seperator);
     padding-top: 3px;
 }
 
-#NextVoterButton
-{
+#NextVoterButton {
     white-space: normal;
     border: none;
     width: var(--button-width);
     height: var(--seperator);
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     border-radius: var(--corner-radius);
 }
 
-#NextVoterButton:hover
-{
+#NextVoterButton:hover {
     background-color: darkgrey;
 }
 
-#SeeResultsButton
-{
-   bottom: calc(0% + var(--primary-box-padding));
-   left: calc(0% + var(--primary-box-padding));
-   position: absolute;
-   white-space: normal;
-   border: none;
-   width: var(--button-width);
-   height: var(--seperator);
-   font-family: 'Fira Sans', sans-serif;
-   border-radius: var(--corner-radius);
+#SeeResultsButton {
+    bottom: calc(0% + var(--primary-box-padding));
+    left: calc(0% + var(--primary-box-padding));
+    position: absolute;
+    white-space: normal;
+    border: none;
+    width: var(--button-width);
+    height: var(--seperator);
+    font-family: "Fira Sans", sans-serif;
+    border-radius: var(--corner-radius);
 }
 
-#SeeResultsButton:hover
-{
+#SeeResultsButton:hover {
     background-color: darkgrey;
 }
 
-table
-{
+table {
     table-layout: fixed;
     width: 100%;
     height: 100%;
     border-collapse: collapse;
 }
 
-th
-{
+th {
     font-weight: bold;
     font-size: larger;
     text-align: center;
     background-color: blanchedalmond;
 }
-  
-td
-{
+
+td {
     text-align: center;
 }
 
-input[type="radio"]
-{
-    -ms-transform: scale(1.5); 
+input[type="radio"] {
+    -ms-transform: scale(1.5);
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
 }
 
 /* zebra striping */
 
-tbody tr:nth-child(odd)
-{
+tbody tr:nth-child(odd) {
     background-color: #ff33cc;
 }
-  
-tbody tr:nth-child(even)
-{
+
+tbody tr:nth-child(even) {
     background-color: #e495e4;
 }
-  
-tbody tr
-{
+
+tbody tr {
     background-image: url(noise.png);
 }
-  
-table
-{
+
+table {
     background-color: #ff33cc;
 }

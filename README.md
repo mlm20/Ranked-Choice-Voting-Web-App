@@ -4,7 +4,7 @@ The project in this repository is the primary submission for my DE1 **Computing 
 
 ## Brief
 
-For this project I sought to create a *voting machine* style election calculator for Instant Runoff (Ranked Choice Voting) elections.
+For this project I sought to create a _voting machine_ style election calculator for Instant Runoff (Ranked Choice Voting) elections.
 
 On the first page the user is able to nominate (input) the candidates/choices for the election.
 
@@ -26,7 +26,7 @@ My goal with the UI and UX was to create a simple interface which was intuitive 
 
 I ensured that the function of each button and input field was self-evident and that the user felt that the web-app was dynamic.
 
-On the voting page I tried hard to make the voting interface mimic an actual Instant Runoff ballot paper, this would make the user experience far more intuitive. Additionally the “Number of Votes”counter was added so the user could keep track of how many people have voted. 
+On the voting page I tried hard to make the voting interface mimic an actual Instant Runoff ballot paper, this would make the user experience far more intuitive. Additionally the “Number of Votes”counter was added so the user could keep track of how many people have voted.
 
 ![](https://d3n8a8pro7vhmx.cloudfront.net/fairvote/pages/106/attachments/original/1494001599/CCD_Grid.jpg?1494001599)
 
@@ -41,24 +41,24 @@ The voting data extracted in `Voting.js` is storage as an Array of Objects, wher
 ```javascript
 [
     {
-        "blue": 4,
-        "red": 1,
-        "yellow": 3,
-        "pink": 2
+        blue: 4,
+        red: 1,
+        yellow: 3,
+        pink: 2,
     },
     {
-        "blue": 1,
-        "red": 2,
-        "yellow": 3,
-        "pink": 4
+        blue: 1,
+        red: 2,
+        yellow: 3,
+        pink: 4,
     },
     {
-        "blue": 2,
-        "red": 3,
-        "yellow": 1,
-        "pink": 4
-    }
-]
+        blue: 2,
+        red: 3,
+        yellow: 1,
+        pink: 4,
+    },
+];
 ```
 
 This data is sent via Ajax to the `RCV_algorithm.js` on the server where various Array manipulation methods are applied to calculate the results of the election. These results are also an Array of Objects but where each Object represents the percentage each candidate got in each runoff round, e.g.
@@ -66,21 +66,21 @@ This data is sent via Ajax to the `RCV_algorithm.js` on the server where various
 ```javascript
 [
     {
-        "blue": 16.666666666666664,
-        "red": 25,
-        "yellow": 33.33333333333333,
-        "pink": 25
+        blue: 16.666666666666664,
+        red: 25,
+        yellow: 33.33333333333333,
+        pink: 25,
     },
     {
-        "red": 33.33333333333333,
-        "yellow": 41.66666666666667,
-        "pink": 25
+        red: 33.33333333333333,
+        yellow: 41.66666666666667,
+        pink: 25,
     },
     {
-        "red": 50,
-        "yellow": 50
-    }
-]
+        red: 50,
+        yellow: 50,
+    },
+];
 ```
 
 ## Debugging
@@ -95,9 +95,8 @@ For example, I encountered a bug where the `empty_candidate_obj()` function was 
 
 I made sure to separate my code into various modules and into separate folders named after the contents’ function.
 
-I added very frequent comments to my code making clear each section’ purpose. 
+I added very frequent comments to my code making clear each section’ purpose.
 
 I made frequent commits using git to properly version control my code to prevent code-breaking bugs later down the line.
 
 I followed ES6 guidelines and made sure to eliminate almost all JSLint error messages.
-

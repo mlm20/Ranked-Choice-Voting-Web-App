@@ -1,31 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
-:root
-{
-   /* Title Variables */
-   --banner-height: 140px; /* KEEP THIS */
-   --banner-width: 200px;
-   --title-box-padding: 1px;
-   --corner-radius: 8px;
-   --box-margin: 40px;
-   --primary-box-padding: 1em;
-   --box-height: 90%;
-   --box-margin: 40px;
-   --results-box-width: 60%;
-   --counter-height: 70px;
-   --seperator: 10%;
-   --button-width: 40%;
-   --summary-height: calc(100px + 4%);
-   --submission-box-height: 5%;
+:root {
+    /* Title Variables */
+    --banner-height: 140px; /* KEEP THIS */
+    --banner-width: 200px;
+    --title-box-padding: 1px;
+    --corner-radius: 8px;
+    --box-margin: 40px;
+    --primary-box-padding: 1em;
+    --box-height: 90%;
+    --box-margin: 40px;
+    --results-box-width: 60%;
+    --counter-height: 70px;
+    --seperator: 10%;
+    --button-width: 40%;
+    --summary-height: calc(100px + 4%);
+    --submission-box-height: 5%;
 }
 
-#title
-{
+#title {
     margin: auto;
     padding-top: var(--title-box-padding);
     padding-bottom: var(--title-box-padding);
     background-color: aqua;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-weight: bold;
     text-align: center;
     width: var(--banner-width);
@@ -33,10 +31,9 @@
     border: 2px grey solid;
 }
 
-#main
-{
+#main {
     align-items: top;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     width: 100%;
     height: calc(100% - var(--banner-height));
     position: absolute;
@@ -45,8 +42,7 @@
     box-sizing: border-box;
 }
 
-#ResultAnnouncement
-{
+#ResultAnnouncement {
     border: 2px grey solid;
     background-color: bisque;
     padding: var(--primary-box-padding);
@@ -56,8 +52,7 @@
     margin: auto;
 }
 
-#ElectionSummary
-{
+#ElectionSummary {
     text-align: center;
     background-color: dodgerblue;
     height: var(--summary-height);
@@ -66,51 +61,43 @@
     padding-top: var(--primary-box-padding);
 }
 
-#ElectionTableContainer
-{
+#ElectionTableContainer {
     background-color: chartreuse;
     height: calc(100% - var(--summary-height));
 }
 
-table
-{
+table {
     table-layout: fixed;
     width: 100%;
     height: 100%;
     border-collapse: collapse;
 }
 
-th
-{
+th {
     font-weight: bold;
     font-size: larger;
     text-align: center;
     background-color: blanchedalmond;
 }
-  
-td
-{
+
+td {
     text-align: center;
 }
 
 /* zebra striping */
 
-tbody tr:nth-child(odd)
-{
+tbody tr:nth-child(odd) {
     background-color: #ff33cc;
 }
-  
-tbody tr:nth-child(even)
-{
+
+tbody tr:nth-child(even) {
     background-color: #e495e4;
 }
-  
-tbody tr
-{
+
+tbody tr {
     background-image: url(noise.png);
 }
-  
-table
-{
+
+table {
     background-color: #ff33cc;
 }

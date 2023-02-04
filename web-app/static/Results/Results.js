@@ -20,8 +20,8 @@ const election_summary = document.getElementById("ElectionSummary");
 
 // query the server
 Ajax.query({
-    "type": "results",
-    "raw_data": raw_voting_data
+    type: "results",
+    raw_data: raw_voting_data,
 }).then(function (response_object) {
     console.log(".then function");
     // store ajax outputs in variables
@@ -74,7 +74,6 @@ Ajax.query({
     // create table body
     let i;
     for (i = 1; i <= how_many_rounds; i += 1) {
-
         // create new table row for election round
         let new_row = document.createElement("tr");
         new_row.id = String("row_" + i);
@@ -87,15 +86,17 @@ Ajax.query({
         // add results to row
         let j;
         for (j = 1; j <= candidate_list.length; j += 1) {
-
             // create cell for result
             let cell = document.createElement("td");
 
             // fill cell with percentage if candidate was present that round
             // leave blank if candidate was already eliminated
             if (results[i - 1].hasOwnProperty(candidate_list[j - 1])) {
-                cell.textContent = String((Math.round(results[i - 1][
-                    candidate_list[j - 1]] * 100) / 100) + " %");
+                cell.textContent = String(
+                    Math.round(results[i - 1][candidate_list[j - 1]] * 100) /
+                        100 +
+                        " %"
+                );
             }
 
             // add cell to row
@@ -126,12 +127,10 @@ Ajax.query({
 
     // set textContent of results summary
     if (name_of_winner === "DRAW") {
-        election_summary.textContent = `The election ended in a draw between ${
-            draw_can1} and ${draw_can2}`;
+        election_summary.textContent = `The election ended in a draw between ${draw_can1} and ${draw_can2}`;
     } else {
         election_summary.textContent = `${name_of_winner} won with ${
-                Math.round(percentage_of_winner * 100) / 100
-            }% of the vote after ${
-            how_many_rounds} ${round_or_rounds}`;
+            Math.round(percentage_of_winner * 100) / 100
+        }% of the vote after ${how_many_rounds} ${round_or_rounds}`;
     }
 });

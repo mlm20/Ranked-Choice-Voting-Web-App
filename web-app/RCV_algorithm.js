@@ -120,7 +120,6 @@ const most_votes = function (results_obj) {
 // if there are multiple candidates with the fewest votes, choose a random one
 // returns "DRAW" in case of 50:50 draw
 const fewest_votes = function (raw_data) {
-
     const added_votes = add_first_choices(raw_data);
 
     const min_value = Math.min(...Object.values(added_votes));
@@ -138,7 +137,6 @@ const eliminate_last_candidate = function (raw_data) {
 
     // loop over single array containing voting objects
     raw_data.forEach(function (single_voter_obj) {
-
         // create seperate copy of voter object
         const voter_obj_copy = copy_obj(single_voter_obj);
         let elim_can_value = 0;
@@ -184,7 +182,6 @@ Algorithm.results = function (raw_data) {
 
     // while no candidate has a majority
     while (who_has_majority(current_round_data) === null) {
-
         // eliminate candidate in last place
         current_round_data = eliminate_last_candidate(current_round_data);
 
@@ -200,9 +197,8 @@ Algorithm.results = function (raw_data) {
 // returns "DRAW" in case of draw
 Algorithm.name_of_winner = function (raw_data) {
     // get object of final round results
-    const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
-        raw_data
-    ).length - 1];
+    const final_round_obj =
+        Algorithm.results(raw_data)[Algorithm.results(raw_data).length - 1];
 
     // apply helper function
     return most_votes(final_round_obj);
@@ -212,9 +208,8 @@ Algorithm.name_of_winner = function (raw_data) {
 // returns "DRAW" in case of draw
 Algorithm.percentage_of_winner = function (raw_data) {
     // get object of final round results
-    const final_round_obj = Algorithm.results(raw_data)[Algorithm.results(
-        raw_data
-    ).length - 1];
+    const final_round_obj =
+        Algorithm.results(raw_data)[Algorithm.results(raw_data).length - 1];
 
     // handle draws
     if (most_votes(final_round_obj) === "DRAW") {

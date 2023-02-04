@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
 
-:root
-{
+:root {
     /* Title Variables */
     --banner-height: 140px; /* KEEP THIS */
     --banner-width: 400px;
@@ -20,15 +19,12 @@
     --candidate-margin: 3%;
 }
 
-
-
-#title
-{
+#title {
     margin: auto;
     padding-top: var(--title-box-padding);
     padding-bottom: var(--title-box-padding);
     background-color: aqua;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-weight: bold;
     text-align: center;
     width: var(--banner-width);
@@ -36,10 +32,9 @@
     border: 2px grey solid;
 }
 
-#main
-{
+#main {
     align-items: top;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     width: 100%;
     height: calc(100% - var(--banner-height));
     position: absolute;
@@ -47,53 +42,57 @@
     /* background-color: aquamarine; */
 }
 
-#CandidateBox
-{
+#CandidateBox {
     border: 2px grey solid;
     background-color: rgb(230, 7, 218);
     padding: var(--primary-box-padding);
-    height: calc(var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) * 2);
-    width: calc(var(--candidate-box-width) - var(--box-margin) * 2 - var(--primary-box-padding) * 2);
+    height: calc(
+        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
+            2
+    );
+    width: calc(
+        var(--candidate-box-width) - var(--box-margin) * 2 -
+            var(--primary-box-padding) * 2
+    );
     position: absolute;
     border-radius: var(--corner-radius);
 }
 
-#Candidate-Title
-{
+#Candidate-Title {
     text-align: center;
     /* background-color: blue; */
     height: var(--candidate-title-height);
-
 }
 
-#Candidate_list
-{
+#Candidate_list {
     background-color: cornflowerblue;
-    height: calc(100% - var(--candidate-title-height) - var(--primary-box-padding) * 2 - 10%);
+    height: calc(
+        100% - var(--candidate-title-height) - var(--primary-box-padding) * 2 -
+            10%
+    );
     width: calc(var(--candidate-list-width) - var(--primary-box-padding) * 3);
     position: absolute;
     padding: var(--primary-box-padding);
 }
 
-#Input-Container
-{
+#Input-Container {
     background-color: blueviolet;
     left: var(--candidate-list-width);
-    width: calc(100% - var(--candidate-list-width) - var(--primary-box-padding));
+    width: calc(
+        100% - var(--candidate-list-width) - var(--primary-box-padding)
+    );
     height: calc(100% - var(--candidate-title-height) - 10%);
     position: absolute;
     padding: 0px;
 }
 
-#Input-box-label
-{
+#Input-box-label {
     background-color: darkgreen;
     width: calc(100% - var(--primary-box-padding) * 2);
     padding: var(--primary-box-padding);
 }
 
-#candidate-input-field
-{
+#candidate-input-field {
     position: absolute;
     width: var(--text-input-width);
     height: var(--text-input-height);
@@ -102,27 +101,24 @@
     padding: none;
 }
 
-#add-candidate-button
-{
+#add-candidate-button {
     position: absolute;
     width: calc(100% - var(--text-input-width));
     height: var(--text-input-height);
     left: var(--text-input-width);
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     border: none;
     padding: none;
     white-space: normal;
 }
 
-#add-candidate-button:hover
-{
+#add-candidate-button:hover {
     background-color: darkgrey;
 }
 
-#start-election-button
-{
+#start-election-button {
     position: absolute;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     width: calc(100% - var(--text-input-width));
     height: var(--text-input-height);
     left: 0%;
@@ -131,18 +127,22 @@
     white-space: normal;
 }
 
-#start-election-button:hover
-{
+#start-election-button:hover {
     background-color: darkgrey;
 }
 
-#AboutBox
-{
+#AboutBox {
     border: 2px grey solid;
     padding: var(--primary-box-padding);
     background-color: yellow;
-    height: calc(var(--box-height) + var(--box-margin) * 2 -  var(--primary-box-padding) * 2);
-    width: calc(100% - (var(--box-margin) * 2) - var(--candidate-box-width) - 8% - var(--primary-box-padding) * 2);
+    height: calc(
+        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
+            2
+    );
+    width: calc(
+        100% - (var(--box-margin) * 2) - var(--candidate-box-width) - 8% -
+            var(--primary-box-padding) * 2
+    );
     position: absolute;
     left: var(--candidate-box-width);
     border-radius: var(--corner-radius);
