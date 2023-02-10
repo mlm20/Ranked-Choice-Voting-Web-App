@@ -1,112 +1,102 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
-
-:root {
-    /* Title Variables */
-    --banner-height: 140px; /* KEEP THIS */
-    --banner-width: 400px;
-    --title-box-padding: 1px;
-    /* First Primary Boxes */
-    --box-height: 60%;
-    --candidate-box-width: 60%;
-    --box-margin: 40px;
-    --primary-box-padding: 1em;
-    --corner-radius: 8px;
-    /* Candidate Box */
-    --candidate-title-height: 10%;
-    --candidate-list-width: 30%;
-    --text-input-width: 70%;
-    --text-input-height: 15%;
-    --candidate-margin: 3%;
+/* @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap"); */
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
-#title {
-    margin: auto;
-    padding-top: var(--title-box-padding);
-    padding-bottom: var(--title-box-padding);
-    background-color: aqua;
-    font-family: "Fira Sans", sans-serif;
-    font-weight: bold;
-    text-align: center;
-    width: var(--banner-width);
-    border-radius: var(--corner-radius);
-    border: 2px grey solid;
-}
-
-#main {
-    align-items: top;
-    font-family: "Fira Sans", sans-serif;
+/* Overall Layout */
+.layout {
     width: 100%;
-    height: calc(100% - var(--banner-height));
-    position: absolute;
-    padding: var(--box-margin);
-    /* background-color: aquamarine; */
+  
+    display: grid;
+    grid:
+      "header" auto
+      "main" 1fr
+      "footer" auto
+      / 1fr;
+    gap: 15px;
+}
+
+header {
+    background-color: lightgray;
+    margin: auto;
+    grid-area: header;
+}
+
+h1 {
+    font-size: 40pt;
+    margin-bottom: 20px;
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* width: 70%; */
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.grow1 {
+    flex-grow: 1;
 }
 
 #CandidateBox {
-    border: 2px grey solid;
-    background-color: rgb(230, 7, 218);
-    padding: var(--primary-box-padding);
-    height: calc(
-        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
-            2
-    );
-    width: calc(
-        var(--candidate-box-width) - var(--box-margin) * 2 -
-            var(--primary-box-padding) * 2
-    );
-    position: absolute;
-    border-radius: var(--corner-radius);
+    background-color:lightgrey;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    /* padding-left: 1px; */
 }
 
-#Candidate-Title {
-    text-align: center;
-    /* background-color: blue; */
-    height: var(--candidate-title-height);
+.grow2 {
+    flex-grow: 2;
 }
 
-#Candidate_list {
-    background-color: cornflowerblue;
-    height: calc(
-        100% - var(--candidate-title-height) - var(--primary-box-padding) * 2 -
-            10%
-    );
-    width: calc(var(--candidate-list-width) - var(--primary-box-padding) * 3);
-    position: absolute;
-    padding: var(--primary-box-padding);
+#Candidate-Content {
+    display: flex;
+    gap: 10px;
+}
+
+.grow3 {
+    flex-grow: 1
 }
 
 #Input-Container {
-    background-color: blueviolet;
-    left: var(--candidate-list-width);
-    width: calc(
-        100% - var(--candidate-list-width) - var(--primary-box-padding)
-    );
-    height: calc(100% - var(--candidate-title-height) - 10%);
-    position: absolute;
-    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
+.grow4 {
+    flex-grow: 1;
+}
+
+
+#Candidate-Title {
+    text-align: center;
+}
+
+#Candidate_list {
+
+}
+
+
+
 #Input-box-label {
-    background-color: darkgreen;
-    width: calc(100% - var(--primary-box-padding) * 2);
-    padding: var(--primary-box-padding);
+
 }
 
 #candidate-input-field {
-    position: absolute;
-    width: var(--text-input-width);
-    height: var(--text-input-height);
-    left: 0%;
-    border: none;
-    padding: none;
+
 }
 
 #add-candidate-button {
-    position: absolute;
     width: calc(100% - var(--text-input-width));
     height: var(--text-input-height);
     left: var(--text-input-width);
-    font-family: "Fira Sans", sans-serif;
+    /* font-family: "Fira Sans", sans-serif; */
     border: none;
     padding: none;
     white-space: normal;
@@ -117,13 +107,8 @@
 }
 
 #start-election-button {
-    position: absolute;
-    font-family: "Fira Sans", sans-serif;
     width: calc(100% - var(--text-input-width));
     height: var(--text-input-height);
-    left: 0%;
-    bottom: 0%;
-    border: none;
     white-space: normal;
 }
 
@@ -132,18 +117,13 @@
 }
 
 #AboutBox {
-    border: 2px grey solid;
-    padding: var(--primary-box-padding);
-    background-color: yellow;
-    height: calc(
-        var(--box-height) + var(--box-margin) * 2 - var(--primary-box-padding) *
-            2
-    );
-    width: calc(
-        100% - (var(--box-margin) * 2) - var(--candidate-box-width) - 8% -
-            var(--primary-box-padding) * 2
-    );
-    position: absolute;
-    left: var(--candidate-box-width);
-    border-radius: var(--corner-radius);
+    background-color:lightgrey;
+    flex-grow: 1;
+}
+
+footer {
+    grid-area: footer;
+    font-size: smaller;
+    font-weight: lighter;
+    margin: auto;
 }

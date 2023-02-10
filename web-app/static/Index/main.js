@@ -22,16 +22,26 @@ const add_name_to_pane = function (name) {
 const Candidate_List = []; // declaration of candidate list
 
 add_candidate_button.onclick = function () {
-    console.log(candidate_input_text.value);
-    // log for debugging
-    Candidate_List.push(candidate_input_text.value);
-    // add candidate name to array
-    push_to_session_storage(Candidate_List);
-    // push array to session storage
-    add_name_to_pane(candidate_input_text.value);
-    // adds candidate name to sidebar
-    reset_text_field("candidate-input-field");
-    // clear candidate input field
+    if (candidate_input_text.value !== "") {
+        console.log(candidate_input_text.value);
+
+        // add candidate name to array
+        Candidate_List.push(candidate_input_text.value);
+
+        // push array to session storage
+        push_to_session_storage(Candidate_List);
+
+        // adds candidate name to sidebar
+        add_name_to_pane(candidate_input_text.value);
+
+        // clear candidate input field
+        reset_text_field("candidate-input-field");
+        return;
+    }
+    if (candidate_input_text.value === "") {
+        console.log("Candidate input field was empty");
+        window.alert("Candidate input field was empty");
+    }
 };
 
 start_election.onclick = function () {
