@@ -1,4 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+* {
+    font-family: Inter, sans-serif;
+    background-color: #f8f5f2;
+}
 
 :root {
     /* Title Variables */
@@ -18,47 +21,38 @@
     --submission-box-height: 5%;
 }
 
-#title {
+header {
     margin: auto;
-    padding-top: var(--title-box-padding);
-    padding-bottom: var(--title-box-padding);
-    background-color: aqua;
-    font-family: "Fira Sans", sans-serif;
-    font-weight: bold;
     text-align: center;
-    width: var(--banner-width);
-    border-radius: var(--corner-radius);
-    border: 2px grey solid;
 }
 
-#main {
-    align-items: top;
-    font-family: "Fira Sans", sans-serif;
-    width: 100%;
-    height: calc(100% - var(--banner-height));
-    position: absolute;
-    padding: var(--box-margin);
-    /* background-color: aquamarine; */
-    box-sizing: border-box;
+h1 {
+    font-size: 40pt;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 #ResultAnnouncement {
-    border: 2px grey solid;
-    background-color: bisque;
-    padding: var(--primary-box-padding);
-    height: var(--box-height);
-    width: var(--results-box-width);
-    border-radius: var(--corner-radius);
-    margin: auto;
+    border: 2px solid #000;
+    background-color: white;
+    width: 500px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
 }
 
 #ElectionSummary {
     text-align: center;
-    background-color: dodgerblue;
+    background-color: white;
     height: var(--summary-height);
-    box-sizing: border-box;
-    font-size: x-large;
-    padding-top: var(--primary-box-padding);
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #ElectionTableContainer {
@@ -74,30 +68,29 @@ table {
 }
 
 th {
-    font-weight: bold;
+    font-weight: bolder;
     font-size: larger;
     text-align: center;
-    background-color: blanchedalmond;
+    background-color: #06f;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 td {
     text-align: center;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-/* zebra striping */
-
-tbody tr:nth-child(odd) {
-    background-color: #ff33cc;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #e495e4;
-}
-
-tbody tr {
-    background-image: url(noise.png);
-}
-
-table {
-    background-color: #ff33cc;
+footer {
+    grid-area: footer;
+    font-size: smaller;
+    font-weight: light;
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
 }

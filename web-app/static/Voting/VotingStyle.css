@@ -214,14 +214,11 @@ input[type="radio"] {
     background-color: white;
 }
 
-tbody tr:nth-child(odd) {
-    background-color: white;
-}
-
-tbody tr:nth-child(even) {
-    background-color: white;
-}
-
-tbody tr {
-    background-image: url(noise.png);
+footer {
+    grid-area: footer;
+    font-size: smaller;
+    font-weight: light;
+    margin: auto;
+    padding-top: 40px;
+    text-align: center;
 }

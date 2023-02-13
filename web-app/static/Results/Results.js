@@ -53,7 +53,7 @@ Ajax.query({
 
     // apply first column "Round #" title label
     let results_header = document.createElement("th");
-    results_header.innerText = "Round #";
+    results_header.innerText = "Round Number";
     results_table_header_row.append(results_header);
 
     // apply candidate names to header row
