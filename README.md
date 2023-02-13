@@ -1,6 +1,6 @@
 # Project
 
-The project in this repository is the primary submission for my DE1 **Computing 2: Applications** module at Imperial College London. The aim of this module was to become comfortable developing web-apps with a server and client side. The focus was on the backend and functionality, rather than UI/UX.
+The project in this repository is the primary submission for my DE1 **Computing 2: Applications** module at Imperial College London. The aim of this module was to become comfortable developing web-apps with a server and client side.
 
 ## Brief
 
