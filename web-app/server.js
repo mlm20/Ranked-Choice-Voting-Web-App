@@ -17,5 +17,5 @@ app.post("/", function (req, res) {
 });
 
 app.listen(port, function () {
-    console.log(`Listening on port ${port} – http://localhost:${port}/index/index.html`);
+    console.log(`Listening on port ${port} – http://localhost:${port}`);
 });

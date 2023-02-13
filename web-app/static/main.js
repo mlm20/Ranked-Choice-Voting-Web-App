@@ -1,7 +1,7 @@
 const add_candidate_button = document.getElementById("add-candidate-button");
 const start_election = document.getElementById("start-election-button");
 const candidate_input_text = document.getElementById("candidate-input-field");
-const candidate_list_area = document.getElementById("list");
+const candidate_list_area = document.getElementById("Candidate_list");
 
 const push_to_session_storage = function (input) {
     let JSON_String = JSON.stringify(input);
@@ -13,7 +13,7 @@ const reset_text_field = function (text_field_id) {
 }; // clears the text for input field
 
 const add_name_to_pane = function (name) {
-    let node = document.createElement("LI");
+    let node = document.createElement("div");
     let textnode = document.createTextNode(name);
     node.appendChild(textnode);
     candidate_list_area.appendChild(node);
@@ -47,7 +47,7 @@ add_candidate_button.onclick = function () {
 start_election.onclick = function () {
     if (Candidate_List.length >= 2) {
         console.log("Election started");
-        location.href = "../Voting/Voting.html";
+        location.href = "./Voting/Voting.html";
     } else {
         window.alert("You must input at least two candidates.");
     }
