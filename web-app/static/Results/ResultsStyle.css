@@ -3,24 +3,6 @@
     background-color: #f8f5f2;
 }
 
-:root {
-    /* Title Variables */
-    --banner-height: 140px; /* KEEP THIS */
-    --banner-width: 200px;
-    --title-box-padding: 1px;
-    --corner-radius: 8px;
-    --box-margin: 40px;
-    --primary-box-padding: 1em;
-    --box-height: 90%;
-    --box-margin: 40px;
-    --results-box-width: 60%;
-    --counter-height: 70px;
-    --seperator: 10%;
-    --button-width: 40%;
-    --summary-height: calc(100px + 4%);
-    --submission-box-height: 5%;
-}
-
 header {
     margin: auto;
     text-align: center;
