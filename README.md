@@ -2,6 +2,8 @@
 
 The project in this repository is the primary submission for my DE1 **Computing 2: Applications** module at Imperial College London. The aim of this module was to become comfortable developing web-apps with a server and client side.
 
+To use the app, follow the link to the deployed version on [Glitch](https://ranked-choice-voting.glitch.me/).
+
 ## Brief
 
 For this project I sought to create a _voting machine_ style election calculator for Instant Runoff (Ranked Choice Voting) elections.
