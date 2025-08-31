@@ -3,10 +3,10 @@
     "dependencies": {
         "express": "^4.17.1",
         "express-session": "^1.17.1",
-        "npm-install-all": "^1.1.21"
+        "npm-install-all": "^1.1.6"
     },
     "devDependencies": {
         "fast-check": "^2.14.0",
-        "mocha": "^8.3.2"
+        "mocha": "^11.7.1"
     }
 }
